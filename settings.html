@@ -4,13 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BunkTrackr - Track your bunks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <form>
-      <input type="text" id="add-subject-input" />
-      <button id="add-subject-btn">Add Subject</button>
-    </form>
-    <script src="./settings.js"></script>
+    <nav class="nav">
+      <div class="nav-header">
+        <a href="/"
+          ><h1 class="nav-heading">
+            bunk<span class="nav-highlight">trackr</span>
+          </h1></a
+        >
+        <a href="./settings.html"
+          ><img
+            class="settings-icon"
+            src="./assets/settings.svg"
+            alt="settings-icon"
+        /></a>
+      </div>
+      <p class="sub-heading-nav">Keep a record of the days you've bunked.</p>
+      <div class="nav-lining"></div>
+    </nav>
+    <ul class="settings-list">
+      <li>
+        <h2>Add Subject</h2>
+        <form class="settings-form">
+          <label for="add-subject-input" class="settings-form-label"
+            >Enter the name of the subject:</label
+          >
+          <input type="text" id="add-subject-input" class="add-subject-input" />
+          <button type="button" id="add-subject-btn" class="btn">
+            Add Subject +
+          </button>
+        </form>
+      </li>
+      <li>
+        <div class="nav-lining"></div>
+        <h2>Delete Subject</h2>
+        <form class="settings-form">
+          <label for="delete-subject-input" class="settings-form-label"
+            >Select the name of the subject you want to delete</label
+          >
+          <div id="delete-subject-input-div"></div>
+          <button id="delete-subject-btn" class="btn btn-red">
+            Delete Subject
+          </button>
+        </form>
+      </li>
+      <li>
+        <div class="nav-lining"></div>
+        <h2>Delete Classes</h2>
+        <form class="settings-form">
+          <label for="reset-subjects-btn" class="settings-form-label"
+            >Delete already added classes from the table</label
+          >
+          <div id="delete-classes-div" class="delete-classes-container"></div>
+        </form>
+      </li>
+      <li>
+        <div class="nav-lining"></div>
+        <h2>Reset Data</h2>
+        <form class="settings-form">
+          <label for="reset-subjects-btn" class="settings-form-label"
+            >Clicking on this will reset all your data.</label
+          >
+          <button id="reset-subjects-btn" class="btn btn-red">Reset all</button>
+        </form>
+      </li>
+    </ul>
+
+    <div id="snackbar"></div>
+    <script type="module" src="./settings.js"></script>
   </body>
 </html>

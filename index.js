@@ -1,7 +1,12 @@
+import { showToast, formatDateToReplaceMonthName } from "./utils.js";
 const subjectOptionsUl = document.getElementById("subject-options-ul");
 const datePicker = document.getElementById("date-picker");
 const trackBunkBtn = document.getElementById("track-bunk-btn");
 const tableDiv = document.getElementById("table-div");
+const subjectTemplateDiv = document.getElementById("subject-template-div");
+const toastEl = document.getElementById("snackbar");
+let setTimeoutId;
+
 
 let bunkData = JSON.parse(localStorage.getItem("bunkData"));
 if (!bunkData) {
@@ -13,6 +18,20 @@ if (!bunkData) {
   bunkData = bunkObj;
 }
 
+if (Object.keys(bunkData.classes).length == 0) {
+  subjectTemplateDiv.style.display = "block";
+
+  // templates
+  const templateCSE = document.getElementById("template-cse");
+  // const templateCSSE = document.getElementById("template-csse");
+
+  templateCSE.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.setItem("bunkData", JSON.stringify(CSETEMPLATE));
+    location.reload();
+  });
+}
+
 setCurrentDateToDatePicker(datePicker);
 createSubjectOptions(subjectOptionsUl, bunkData);
 updateTable(tableDiv, bunkData);
@@ -21,17 +40,18 @@ trackBunkBtn.addEventListener("click", function (e) {
   e.preventDefault();
   const subject = document.querySelector("input[name='subject']:checked");
   if (!subject) {
-    alert("Please select a subject");
+    showToast(toastEl, "Please select a subject", setTimeoutId, "red");
     return;
   }
   const date = datePicker.value;
   if (date == "") {
-    alert("Please select a date");
+    showToast(toastEl, "Please select a date", setTimeoutId, "red");
     return;
   }
   const subjectName = subject.id;
   const dateObj = { id: Date.now(), date: date };
   bunkData.classes[subjectName].bunks.push(dateObj);
+  showToast(toastEl, "Bunk Tracked!", setTimeoutId, "green");
   updateTable(tableDiv, bunkData);
   localStorage.setItem("bunkData", JSON.stringify(bunkData));
 });
@@ -52,6 +72,7 @@ function createSubjectOptions(ul, bunkData) {
     const subjectLi = document.createElement("li");
     const subjectInput = document.createElement("input");
     subjectInput.type = "radio";
+    subjectInput.checked = false;
     subjectInput.id = key;
     subjectInput.name = "subject";
     const subjectLabel = document.createElement("label");
@@ -72,6 +93,7 @@ function updateTable(tableDiv, bunkData) {
       continue;
     }
     const subjectHeading = document.createElement("h2");
+    subjectHeading.className = "table-heading";
     subjectHeading.textContent = `${bunkData.classes[key].name}: ${bunkData.classes[key].bunks.length} bunks`;
     const table = document.createElement("table");
     const tableHead = document.createElement("thead");
@@ -91,7 +113,9 @@ function updateTable(tableDiv, bunkData) {
       const tableBodyNumber = document.createElement("td");
       tableBodyNumber.textContent = i + 1;
       const tableBodyDate = document.createElement("td");
-      tableBodyDate.textContent = bunkData.classes[key].bunks[i].date;
+      tableBodyDate.textContent = formatDateToReplaceMonthName(
+        bunkData.classes[key].bunks[i].date
+      );
       tableBodyRow.appendChild(tableBodyNumber);
       tableBodyRow.appendChild(tableBodyDate);
       tableBody.appendChild(tableBodyRow);
@@ -102,3 +126,49 @@ function updateTable(tableDiv, bunkData) {
   }
   tableDiv.appendChild(tableFragment);
 }
+
+var CSETEMPLATE = {
+  classes: {
+    0: {
+      name: "DBMS",
+      bunks: [],
+    },
+    1: {
+      name: "AFL",
+      bunks: [],
+    },
+    2: {
+      name: "OS",
+      bunks: [],
+    },
+    3: {
+      name: "COA",
+      bunks: [],
+    },
+    4: {
+      name: "PDC",
+      bunks: [],
+    },
+    5: {
+      name: "WT",
+      bunks: [],
+    },
+    6: {
+      name: "BCOM-L",
+      bunks: [],
+    },
+    7: {
+      name: "DBMS-L",
+      bunks: [],
+    },
+    8: {
+      name: "OS-L",
+      bunks: [],
+    },
+    9: {
+      name: "WT-L",
+      bunks: [],
+    },
+  },
+  index: 10,
+};

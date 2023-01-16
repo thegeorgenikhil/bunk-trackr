@@ -15,20 +15,41 @@
   </head>
   <body>
     <nav class="nav">
-      <h1 class="nav-heading">bunk<span class="nav-highlight">trackr</span></h1>
-      <a href="./settings.html"
-        ><img class="settings-icon" src="./assets/settings.svg" alt="settings-icon"
-      /></a>
+      <div class="nav-header">
+        <a href="/">
+          <h1 class="nav-heading">
+            bunk<span class="nav-highlight">trackr</span>
+          </h1>
+        </a>
+        <a href="./settings.html"
+          ><img
+            class="settings-icon"
+            src="./assets/settings.svg"
+            alt="settings-icon"
+        /></a>
+      </div>
+      <p class="sub-heading-nav">
+        Keep a record of the days you've bunked.
+      </p>
+      <div class="nav-lining"></div>
+      <div id="subject-template-div" class="subject-template-container hidden">
+        <p>
+          You haven't added any subjects yet, add subjects from the settings
+          page or by clicking on any of the templates below
+        </p>
+        <ul>
+          <li id="template-cse"><a href="#">CSE 4th Sem</a></li>
+          <!-- <li id="template-csse">CSSE</li> -->
+        </ul>
+      </div>
     </nav>
-    <form>
-      <input
-        type="date"
-        id="date-picker"
-      />
+    <form class="form-container">
+      <input type="date" id="date-picker" />
       <ul class="subject-options" id="subject-options-ul"></ul>
-      <button id="track-bunk-btn">Track Bunk</button>
+      <button id="track-bunk-btn" class="btn">Track Bunk +</button>
     </form>
     <div id="table-div"></div>
-    <script src="./index.js"></script>
+    <div id="snackbar"></div>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

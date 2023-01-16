@@ -7,6 +7,7 @@
 :root {
   --background: #fafafa;
   --primary: #2cb67d;
+  --almost-gray: #666666;
 }
 
 body {
@@ -16,28 +17,69 @@ body {
 }
 
 .nav {
+  margin: auto;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.nav-header {
   display: flex;
   justify-content: space-between;
+}
+
+.nav-lining {
+  width: 100%;
+  height: 1px;
+  background-color: #66666644;
+  margin: 1rem 0;
+}
+
+.sub-heading-nav {
+  color: var(--almost-gray);
+  padding: 0.5rem 0 1rem 0;
 }
 
 .nav-heading {
   font-size: 1.5rem;
 }
 
+.nav-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-highlight {
   color: var(--primary);
 }
 
+.subject-template-container {
+  color: var(--almost-gray);
+  display: none;
+}
+
+.subject-template-container ul {
+  margin: 1rem 0 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subject-template-container li {
+  text-decoration: underline;
+}
+
 .subject-options {
-    display: flex;
-    gap: 10px;
-    list-style: none;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 800px;
 }
 
 .subject-options li {
-  /* float: left; */
-  margin: 0 5px 0 0;
-  width: 100px;
+  width: 150px;
   height: 40px;
   position: relative;
 }
@@ -58,16 +100,246 @@ body {
 }
 
 .subject-options input[type="radio"]:checked + label {
-  background: yellow;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background-color: #00000002;
 }
 
 .subject-options label {
   padding: 5px;
-  border: 1px solid #ccc;
+  font-family: "Inter";
+  color: gray;
+  border: 2px solid #66666644;
   cursor: pointer;
+  border-radius: 3px;
   z-index: 90;
+  text-align: center;
+  font-weight: 600;
 }
 
 .subject-options label:hover {
   background: #ddd;
+}
+
+input[type="date"] {
+  background-color: var(--primary);
+  padding: 5px 15px;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-family: "Inter";
+}
+::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.btn {
+  background-color: var(--primary);
+  padding: 5px 15px;
+  color: #ffffff;
+  font-size: 15px;
+  border: 2px solid rgba(0, 100, 0, 0.346);
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  opacity: 0.8;
+  border: 2px solid rgba(0, 100, 0, 0.5);
+}
+
+.btn-red {
+  background-color: #ce0505;
+  border: 2px solid rgba(100, 0, 0, 0.346);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.table-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  max-width: 30rem;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+table th {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem;
+}
+
+table td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: var(--primary); /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/* Settings Page */
+
+.add-subject-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-family: "Inter";
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.settings-form-label {
+  color: var(--almost-gray);
+  padding-top: 4px;
+}
+
+.settings-list {
+  max-width: 800px;
+  margin: auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-list li h2 {
+  color: var(--almost-gray);
+}
+
+#delete-subject-input-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.delete-subject-option {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-classes-container {
+  width: 100%;
+}
+
+.delete-class-btn {
+  color: #ce0505;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 5;
 }
