@@ -64,10 +64,6 @@ body {
   gap: 0.5rem;
 }
 
-.subject-template-container li {
-  text-decoration: underline;
-}
-
 .subject-options {
   display: flex;
   list-style: none;
