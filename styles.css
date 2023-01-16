@@ -71,7 +71,7 @@ body {
   margin: 1rem auto;
   flex-wrap: wrap;
   gap: 4px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .subject-options li {

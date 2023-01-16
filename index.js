@@ -7,7 +7,6 @@ const subjectTemplateDiv = document.getElementById("subject-template-div");
 const toastEl = document.getElementById("snackbar");
 let setTimeoutId;
 
-
 let bunkData = JSON.parse(localStorage.getItem("bunkData"));
 if (!bunkData) {
   const bunkObj = {
@@ -23,11 +22,24 @@ if (Object.keys(bunkData.classes).length == 0) {
 
   // templates
   const templateCSE = document.getElementById("template-cse");
-  // const templateCSSE = document.getElementById("template-csse");
+  const templateCSSE = document.getElementById("template-csse");
+  const templateIT = document.getElementById("template-it");
 
   templateCSE.addEventListener("click", function (e) {
     e.preventDefault();
     localStorage.setItem("bunkData", JSON.stringify(CSETEMPLATE));
+    location.reload();
+  });
+
+  templateCSSE.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.setItem("bunkData", JSON.stringify(CSSETEMPLATE));
+    location.reload();
+  });
+
+  templateIT.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.setItem("bunkData", JSON.stringify(ITTEMPLATE));
     location.reload();
   });
 }
@@ -167,6 +179,98 @@ var CSETEMPLATE = {
     },
     9: {
       name: "WT-L",
+      bunks: [],
+    },
+  },
+  index: 10,
+};
+
+var CSSETEMPLATE = {
+  classes: {
+    0: {
+      name: "DAA",
+      bunks: [],
+    },
+    1: {
+      name: "PS",
+      bunks: [],
+    },
+    2: {
+      name: "OS",
+      bunks: [],
+    },
+    3: {
+      name: "COA",
+      bunks: [],
+    },
+    4: {
+      name: "MMI",
+      bunks: [],
+    },
+    5: {
+      name: "DBMS",
+      bunks: [],
+    },
+    6: {
+      name: "DAA-L",
+      bunks: [],
+    },
+    7: {
+      name: "OS-L",
+      bunks: [],
+    },
+    8: {
+      name: "DBMS-L",
+      bunks: [],
+    },
+    9: {
+      name: "B.COM-L",
+      bunks: [],
+    },
+  },
+  index: 10,
+};
+
+var ITTEMPLATE = {
+  classes: {
+    0: {
+      name: "WT",
+      bunks: [],
+    },
+    1: {
+      name: "DEC",
+      bunks: [],
+    },
+    2: {
+      name: "OS",
+      bunks: [],
+    },
+    3: {
+      name: "COA",
+      bunks: [],
+    },
+    4: {
+      name: "AFL",
+      bunks: [],
+    },
+    5: {
+      name: "DBMS",
+      bunks: [],
+    },
+    6: {
+      name: "WT-L",
+      bunks: [],
+    },
+    7: {
+      name: "OS-L",
+      bunks: [],
+    },
+    8: {
+      name: "DBMS-L",
+      bunks: [],
+    },
+    9: {
+      name: "B.COM-L",
       bunks: [],
     },
   },

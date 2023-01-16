@@ -33,8 +33,11 @@ addSubjectBtn.addEventListener("click", function (e) {
   };
   bunkData.classes[bunkData.index] = subjectObj;
   bunkData.index++;
+  showToast(toastEl, "Subject added", setTimeoutId, "green");
   localStorage.setItem("bunkData", JSON.stringify(bunkData));
-  window.location.reload();
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
 });
 
 deleteSubjectBtn.addEventListener("click", function (e) {
@@ -62,7 +65,9 @@ deleteSubjectBtn.addEventListener("click", function (e) {
   delete bunkData.classes[subjectToDelete];
   showToast(toastEl, "Subject deleted", setTimeoutId, "red");
   localStorage.setItem("bunkData", JSON.stringify(bunkData));
-  window.location.reload();
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
 });
 
 resetSubjectsBtn.addEventListener("click", () => {
@@ -75,13 +80,16 @@ resetSubjectsBtn.addEventListener("click", () => {
   if (!confirm("Last time, no more, will delete everything after this!")) {
     return;
   }
-  showToast(toastEl, "All data deleted", setTimeoutId);
   const bunkObj = {
     classes: {},
     index: 0,
   };
   localStorage.setItem("bunkData", JSON.stringify(bunkObj));
-  window.location.reload();
+  showToast(toastEl, "All data deleted", setTimeoutId);
+  setTimeout(() => {
+    console.log("hello");
+    window.location.reload();
+  }, 1000);
 });
 
 function addDeleteSubjectOptions(deleteSubjectInput, bunkData) {
@@ -156,7 +164,9 @@ function addDeleteClassesTable(deleteClassesDiv, bunkData) {
         bunkData.classes[key].bunks.splice(i, 1);
         showToast(toastEl, "Class deleted", setTimeoutId, "red");
         localStorage.setItem("bunkData", JSON.stringify(bunkData));
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       });
       tableBodyDelete.appendChild(tableBodyDeleteBtn);
       tableBodyRow.appendChild(tableBodyNumber);
