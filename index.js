@@ -23,6 +23,7 @@ if (Object.keys(bunkData.classes).length == 0) {
   // templates
   const templateCSE = document.getElementById("template-cse");
   const templateCSSE = document.getElementById("template-csse");
+  const templateCSCE = document.getElementById("template-csce");
   const templateIT = document.getElementById("template-it");
 
   templateCSE.addEventListener("click", function (e) {
@@ -34,6 +35,12 @@ if (Object.keys(bunkData.classes).length == 0) {
   templateCSSE.addEventListener("click", function (e) {
     e.preventDefault();
     localStorage.setItem("bunkData", JSON.stringify(CSSETEMPLATE));
+    location.reload();
+  });
+
+  templateCSCE.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("bunkData", JSON.stringify(CSCETEMPLATE));
     location.reload();
   });
 
@@ -221,6 +228,52 @@ var CSSETEMPLATE = {
     },
     8: {
       name: "DBMS-L",
+      bunks: [],
+    },
+    9: {
+      name: "B.COM-L",
+      bunks: [],
+    },
+  },
+  index: 10,
+};
+
+var CSCETEMPLATE = {
+  classes: {
+    0: {
+      name: "WT",
+      bunks: [],
+    },
+    1: {
+      name: "DMS",
+      bunks: [],
+    },
+    2: {
+      name: "OS",
+      bunks: [],
+    },
+    3: {
+      name: "COA",
+      bunks: [],
+    },
+    4: {
+      name: "AFL",
+      bunks: [],
+    },
+    5: {
+      name: "CE",
+      bunks: [],
+    },
+    6: {
+      name: "WT-L",
+      bunks: [],
+    },
+    7: {
+      name: "OS-L",
+      bunks: [],
+    },
+    8: {
+      name: "CE-L",
       bunks: [],
     },
     9: {
